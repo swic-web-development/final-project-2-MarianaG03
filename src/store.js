@@ -27,3 +27,5 @@ const store = createStore({
   isLoading: false,
   error: null,
 })
+
+export default store

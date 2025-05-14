@@ -2,11 +2,11 @@ import store from './store'
 
 export async function fetchFilms() {
   // Tells UI that we are loading
-  store.seState({ isLoading: true, error: null })
+  store.setState({ isLoading: true, error: null })
 
   try {
     // Fetching data from API
-    const response = await fetch('https://ghibliapi.vercel.app/films/{id}')
+    const response = await fetch('https://ghibliapi.vercel.app/films')
     // Check if the response is ok
     const data = await response.json()
 
@@ -16,9 +16,9 @@ export async function fetchFilms() {
       isLoading: false,
     })
   } catch (error) {
-    // If there is an error, set the error state
+    // Handle errors
     store.setState({
-      error: 'failed to fetch Films.',
+      error: 'Failed to fetch films.',
       isLoading: false,
       films: [],
     })
